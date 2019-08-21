@@ -1,7 +1,7 @@
 
 import java.util.*;
 
-public class Union_Find
+public class union_find
 {
     private static class DSU
     {

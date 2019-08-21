@@ -1,5 +1,5 @@
 
-public class KMP
+public class kmp
 {
     // time complexity: O( m + n )
     // space complexity: O( n )
