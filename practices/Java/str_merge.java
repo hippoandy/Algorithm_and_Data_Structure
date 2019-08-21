@@ -3,7 +3,7 @@ class str_merge
 {
     public static void main( String[] args )
     {
-        String str1 = "abdcd", str2 = "dcd";
+        String str1 = "abdcdedcd", str2 = "dcd";
 
         String res = kmp_merge( str1, str2 );
         System.out.println( res );
@@ -21,6 +21,8 @@ class str_merge
         int i = 0, j = 0;
         while( i < m )
         {
+            // str2 within str1 (ex. str1 = abdcde, str2 = dcd)
+            if( j >= n ) j = 0;
             if( str1.charAt( i ) == str2.charAt( j ) ) { i++; j++; }
             else
             {
