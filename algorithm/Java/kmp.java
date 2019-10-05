@@ -3,10 +3,10 @@ public class kmp
 {
     // time complexity: O( m + n )
     // space complexity: O( n )
-    private static void kmp_search( String text, String pattern )
+    private static void kmpSearch( String text, String pattern )
     {
         int m = text.length(), n = pattern.length();
-        int[] prefix = prefix_table( pattern, n );
+        int[] prefix = prefixTable( pattern, n );
 
         int i = 0, j = 0;
         while( i < m )
@@ -26,18 +26,20 @@ public class kmp
             }
             else
             {
-                // shift the pattern
-                j = prefix[ j ];
-                // if the current cell has value -1, means not able to find a match, increase i and j by 1
-                if( j == -1 )
-                {
-                    i++; j++;
-                }
+                // // shift the pattern
+                // j = prefix[ j ];
+                // // if the current cell has value -1, means not able to find a match, increase i and j by 1
+                // if( j == -1 )
+                // {
+                //     i++; j++;
+                // }
+                if( j > 0 ) j = prefix[ j-1 ];
+                else        i++;
             }
         }
     }
 
-    private static int[] prefix_table( String pattern, int n )
+    private static int[] prefixTable( String pattern, int n )
     {
         int[] prefix = new int[ n ];
         // build up the prefix table
@@ -52,25 +54,18 @@ public class kmp
             {
                 // make sure the index will not underflow
                 if( j > 0 ) j = prefix[ j-1 ];
-                else
-                    // here j will be 0
-                    // assign j's value to prefix[ i ], then i increased by 1
-                    prefix[ i++ ] = j;
+                // assign j's value to prefix[ i ], then i increased by 1
+                else        prefix[ i++ ] = j;
             }
         }
-        // modified the prefix table
-        // shift the value to the right
-        for( i = n-1; i > 0; i-- )
-            prefix[ i ] = prefix[ i-1 ];
-        // make the first cell in the value of -1
-        prefix[ 0 ] = -1;
-
+        // for( i = n-1; i >= 1; i-- ) prefix[ i ] = prefix[ i-1 ];
+        // prefix[ 0 ] = -1;
         return prefix;
     }
 
     public static void main( String[] args )
     {
         String text = "AABAACAADAABAABA", pattern = "AABA";
-        kmp_search( text, pattern );
+        kmpSearch( text, pattern );
     }
 }
