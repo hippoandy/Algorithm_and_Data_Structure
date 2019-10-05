@@ -1,3 +1,4 @@
+// ref. https://xjay.net/201905/kmp-algorithm-note/
 
 public class kmp
 {
