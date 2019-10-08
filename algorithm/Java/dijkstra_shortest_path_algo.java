@@ -1,3 +1,6 @@
+// ref. https://www.geeksforgeeks.org/dijkstras-shortest-path-algorithm-in-java-using-priorityqueue/
+// ref. https://www.wikiwand.com/en/Dijkstra%27s_algorithm
+
 import java.util.*;
 
 // Dijkstra's Algorithm
